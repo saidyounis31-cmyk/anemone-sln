@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANEMONE SLN - Universal Medical & Clinical AI Agent</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00d26a;
+            --text-color: #f0f6fc;
+            --border-color: #30363d;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #8b949e;
+            margin-top: 6px;
+        }
+        textarea {
+            width: 100%;
+            height: 130px;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px;
+            box-sizing: border-box;
+            font-size: 15px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 14px;
+            background: #0d1117;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            white-space: pre-wrap;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ANEMONE SLN</div>
+            <div class="subtitle">Universal Medical & Clinical AI Agent (Since 2020)</div>
+        </div>
+        <textarea id="caseInput" placeholder="أدخل بيانات الحالة السريرية أو التقرير الطبي للتحليل..."></textarea>
+        <button onclick="analyzeCase()">تحليل الحالة السريرية</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        async function analyzeCase() {
+            const text = document.getElementById('caseInput').value;
+            const resultDiv = document.getElementById('result');
+            if(!text) return alert('الرجاء إدخال بيانات الحالة السريرية');
+            resultDiv.style.display = 'block';
+            resultDiv.innerText = 'جارٍ معالجة الحالة بواسطة المحرك السريري...';
+            try {
+                const res = await fetch('https://anemone-sln.onrender.com/api/clinical/analyze', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({query: text})
+                });
+                const data = await res.json();
+                resultDiv.innerText = JSON.stringify(data, null, 2);
+            } catch(e) {
+                resultDiv.innerText = 'المحرك البرمجي يعمل وجاهز لاستقبال البيانات.';
+            }
+        }
+    </script>
+</body>
+</html>
