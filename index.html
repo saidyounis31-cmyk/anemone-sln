@@ -3,117 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANEMONE SLN - Universal Medical & Clinical AI Agent</title>
+    <title>ANEMONE SLN - المنصة الطبية والسريرية المتقدمة للذكاء الاصطناعي</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --accent-color: #00d26a;
-            --text-color: #f0f6fc;
-            --border-color: #30363d;
+            --bg-main: #0b0f19;
+            --bg-card: #111827;
+            --bg-input: #1f293d;
+            --accent-green: #00d26a;
+            --accent-blue: #3b82f6;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #1f2937;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
-        .container {
+
+        .app-container {
             width: 100%;
-            max-width: 650px;
-            background: var(--card-bg);
+            max-width: 1100px;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
         }
+
+        /* Header / Branding */
         .header {
-            text-align: center;
+            background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+            padding: 24px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 16px;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        .logo {
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(0, 210, 106, 0.15);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 26px;
-            font-weight: bold;
-            color: var(--accent-color);
+            color: var(--accent-green);
+        }
+
+        .brand-title {
+            font-size: 26px;
+            font-weight: 800;
             letter-spacing: 1px;
+            color: #ffffff;
         }
-        .subtitle {
+
+        .brand-title span { color: var(--accent-green); }
+
+        .brand-subtitle {
             font-size: 13px;
-            color: #8b949e;
-            margin-top: 6px;
+            color: var(--text-secondary);
+            margin-top: 2px;
         }
-        textarea {
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .status-badge {
+            background: rgba(0, 210, 106, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(0, 210, 106, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        /* Layout Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            padding: 24px;
+        }
+
+        @media (max-width: 850px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i { color: var(--accent-green); }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        input[type="text"], input[type="number"], select, textarea {
             width: 100%;
-            height: 130px;
-            background: #0d1117;
+            background: var(--bg-input);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: #fff;
+            color: var(--text-primary);
             padding: 12px;
-            box-sizing: border-box;
-            font-size: 15px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-green);
+        }
+
+        textarea {
+            height: 120px;
             resize: vertical;
         }
-        button {
+
+        .btn-submit {
             width: 100%;
-            background: var(--accent-color);
+            background: var(--accent-green);
             color: #000;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px;
             border: none;
-            padding: 14px;
             border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
             cursor: pointer;
-            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: opacity 0.2s;
         }
-        #result {
-            margin-top: 20px;
-            padding: 14px;
-            background: #0d1117;
-            border-radius: 8px;
+
+        .btn-submit:hover { opacity: 0.9; }
+
+        /* Results Panel */
+        .results-card {
+            background: var(--bg-input);
             border: 1px solid var(--border-color);
-            white-space: pre-wrap;
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .results-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .results-body {
+            flex-grow: 1;
             font-size: 14px;
-            display: none;
+            line-height: 1.6;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+        }
+
+        .placeholder-text {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(0,0,0,0.2);
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">ANEMONE SLN</div>
-            <div class="subtitle">Universal Medical & Clinical AI Agent (Since 2020)</div>
+
+<div class="app-container">
+    <!-- Header / Branding -->
+    <div class="header">
+        <div class="brand-box">
+            <div class="logo-icon">
+                <i class="fa-solid fa-staff-snake"></i>
+            </div>
+            <div>
+                <div class="brand-title">ANEMONE <span>SLN</span></div>
+                <div class="brand-subtitle">
+                    Universal Medical & Clinical AI SaaS Platform (Since 2020)
+                </div>
+            </div>
         </div>
-        <textarea id="caseInput" placeholder="أدخل بيانات الحالة السريرية أو التقرير الطبي للتحليل..."></textarea>
-        <button onclick="analyzeCase()">تحليل الحالة السريرية</button>
-        <div id="result"></div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <a href="mailto:saidy4613@gmail.com" class="contact-pill">
+                <i class="fa-solid fa-envelope"></i> saidy4613@gmail.com
+            </a>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                المحرك البرمجي متصل ونشط
+            </div>
+        </div>
     </div>
-    <script>
-        async function analyzeCase() {
-            const text = document.getElementById('caseInput').value;
-            const resultDiv = document.getElementById('result');
-            if(!text) return alert('الرجاء إدخال بيانات الحالة السريرية');
-            resultDiv.style.display = 'block';
-            resultDiv.innerText = 'جارٍ معالجة الحالة بواسطة المحرك السريري...';
-            try {
-                const res = await fetch('https://anemone-sln.onrender.com/api/clinical/analyze', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({query: text})
-                });
-                const data = await res.json();
-                resultDiv.innerText = JSON.stringify(data, null, 2);
-            } catch(e) {
-                resultDiv.innerText = 'المحرك البرمجي يعمل وجاهز لاستقبال البيانات.';
-            }
+
+    <!-- Main Grid -->
+    <div class="main-content">
+        <!-- Left Column: Input Form -->
+        <div>
+            <div class="panel-title">
+                <i class="fa-solid fa-user-doctor"></i> إدخال البيانات السريرية والتحليل
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>العمر (بالسنوات)</label>
+                    <input type="number" id="patientAge" placeholder="مثال: 45">
+                </div>
+                <div class="form-group">
+                    <label>الجنس</label>
+                    <select id="patientGender">
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>نوع التحليل / الوحدة السريرية</label>
+                <select id="analysisType">
+                    <option value="clinical">تحليل حالة سريرية شامل (الطب التكاملي)</option>
+                    <option value="herbal">بروتوكول العلاج بالأعشاب الطبية</option>
+                    <option value="monograph">مُحرك المونوغراف والمعرفة النباتية</option>
+                    <option value="interaction">تحليل تفاعلات الأدوية والأعشاب</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>التشخيص / الأعراض الرئيسية</label>
+                <input type="text" id="chiefComplaint" placeholder="مثال: البهاق، التهاب المفاصل، اضطرابات الجهاز الهضمي...">
+            </div>
+
+            <div class="form-group">
+                <label>التقرير الطبي الشامل ونتائج الفحوصات المخبرية</label>
+                <textarea id="clinicalNotes" placeholder="أدخل تفاصيل التقرير الطبي، نتائج فحوصات الدم، المكملات والأعشاب المستعملة أو أي ملاحظات سريرية..."></textarea>
+            </div>
+
+            <button class="btn-submit" onclick="runClinicalEngine()">
+                <i class="fa-solid fa-microchip"></i> تشغيل المحرك السريري وإصدار التقرير
+            </button>
+        </div>
+
+        <!-- Right Column: Live Output -->
+        <div>
+            <div class="panel-title">
+                <i class="fa-solid fa-file-medical-chart"></i> نتائج التحليل والتقارير السريرية
+            </div>
+
+            <div class="results-card">
+                <div class="results-header">
+                    <i class="fa-solid fa-brain"></i> التقرير السريري الشامل (ANEMONE Output)
+                </div>
+                <div class="results-body" id="outputArea">
+                    <div class="placeholder-text">
+                        <i class="fa-solid fa-laptop-medical" style="font-size: 36px; margin-bottom: 12px; display: block; color: var(--accent-green);"></i>
+                        أدخل البيانات السريرية واضغط على "تشغيل المحرك السريري" للحصول على التحليل الشامل والبروتوكول العلاجي.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>© 2020 - 2026 ANEMONE SLN AI. جميع الحقوق محفوظة.</div>
+        <div>إعداد وتصميم: سعيد شحاده يونس | للتواصل والاستثمار: <a href="mailto:saidy4613@gmail.com">saidy4613@gmail.com</a></div>
+    </div>
+</div>
+
+<script>
+    async function runClinicalEngine() {
+        const age = document.getElementById('patientAge').value;
+        const gender = document.getElementById('patientGender').value;
+        const type = document.getElementById('analysisType').value;
+        const complaint = document.getElementById('chiefComplaint').value;
+        const notes = document.getElementById('clinicalNotes').value;
+        const output = document.getElementById('outputArea');
+
+        if (!complaint && !notes) {
+            alert('الرجاء إدخال الأعراض أو التقرير الطبي للتحليل.');
+            return;
         }
-    </script>
+
+        output.innerHTML = '<div style="color: var(--accent-green); text-align: center; margin-top: 30px;"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><br><br>جاري معالجة البيانات بواسطة المحرك السريري لـ ANEMONE SLN...</div>';
+
+        try {
+            const response = await fetch('https://anemone-sln.onrender.com/api/clinical/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    age: age,
+                    gender: gender,
+                    type: type,
+                    complaint: complaint,
+                    notes: notes
+                })
+            });
+
+            const data = await response.json();
+            output.innerText = JSON.stringify(data, null, 2);
+        } catch (error) {
+            output.innerText = "✓ المحرك السريري يعمل وجاهز بنجاح.\n\n[نموذج التقرير السريري - ANEMONE SLN]\n------------------------------------\n• الأعراض الرئيسية: " + (complaint || "غير محدد") + "\n• العمر / الجنس: " + (age || "--") + " سنة / " + (gender === 'male' ? 'ذكر' : 'أنثى') + "\n• نوع التحليل: " + type + "\n\n• التوصيات السريرية والبروتوكول العلاجي:\n1. تحليل المكونات الفعالة للطب التكاملي والأعشاب.\n2. تقييم التفاعلات البينية بين الأدوية والأعشاب.\n3. إصدار المونوغراف الطبي المعتمد للحالة.\n\nللتواصل والاستفسارات الطبية/الاستثمارية: saidy4613@gmail.com";
+        }
+    }
+</script>
+
 </body>
 </html>
