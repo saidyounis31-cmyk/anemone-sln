@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANEMONE SLN (SINCE 2020) | Universal Medical AI</title>
+
+    <style>
+        :root {
+            --bg-dark: #061A14;
+            --emerald-primary: #10B981;
+            --gold-accent: #D97706;
+            --text-light: #F3F4F6;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10, 41, 32, 0.9);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo-title span {
+            color: var(--emerald-primary);
+        }
+
+        /* Professional User Badge */
+        .user-badge-pill {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid var(--emerald-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Accessibility Button */
+        .accessibility-btn {
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: #0A2920;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gated-blur {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px dashed #EF4444;
+            padding: 1rem;
+            border-radius: 8px;
+            color: #FCA5A5;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-title">ANEMONE <span>SLN</span></div>
+            <small style="opacity: 0.7; font-size: 0.8rem;">SINCE 2020</small>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Dynamic User Badge Header -->
+            <div class="user-badge-pill">
+                <span>أهلاً بك، أ. سارة</span> | 
+                <span style="color: var(--gold-accent);">🥗 דיאטנית קלינית (أخصائية تغذية سريرية)</span>
+            </div>
+
+            <!-- Accessibility Widget Button -->
+            <button class="accessibility-btn" title="הצהרת נגישות / إتاحة التصفح ♿">♿</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="card">
+            <h2>لوحة التشخيص المونوغرافي الفائق</h2>
+            <p>أدخل الحالة السريرية للحصول على تفكيك دقيق للآلية والمركبات الفعالة:</p>
+            <textarea style="width: 100%; height: 80px; background: #061A14; color: white; border: 1px solid #10B981; border-radius: 6px; padding: 10px;" placeholder="اكتب عوارض الحالة المرضية أو اسم النبتة هنا..."></textarea>
+            <button style="margin-top: 10px; background: var(--emerald-primary); color: #000; font-weight: bold; padding: 10px 24px; border: none; border-radius: 6px; cursor: pointer;">تحليل بوساطة ANEMONE AI</button>
+        </div>
+
+        <div class="card">
+            <h3>نتائج التحليل السريري والمكونات الفعالة</h3>
+            <p><strong>الآلية البيولوجية:</strong> ترطيب الغشاء المخاطي وتقليل المسببات الالتهابية.</p>
+            
+            <!-- Soft Paywall Output Demo -->
+            <div class="gated-blur">
+                🔒 <strong>محتوى محجوب للمشتركين:</strong> جدول الجرعات الموزونة بالـ mg، مصفوفة أمان CYP450، ومعاينة د. ميرفي 3D متوفرة فقط في باقة الأخصائيين والطلاب.
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
